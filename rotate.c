@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 16:45:26 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/30 09:36:59 by ltressen         ###   ########.fr       */
+/*   Created: 2023/03/30 09:10:46 by ltressen          #+#    #+#             */
+/*   Updated: 2023/03/30 12:57:49 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_stack *stacks)
+void	rotate_a(t_stack *stacks)
 {
-	int temp;
+	int	i;
+	int	temp;
 
 	temp = stacks->a[0];
-	stacks->a[0] = stacks->a[1];
-	stacks->a[1] = temp;
+	i = 0;
+	while (i < stacks->index - 1)
+	{
+		stacks->a[i] = stacks->a[i + 1];
+		i++;
+	}
+	stacks->a[stacks->index - 1] = temp;
 }
 
-void	swap_b(t_stack *stacks)
+void	rotate_b(t_stack *stacks)
 {
-	int temp;
+	int	i;
+	int	temp;
 
 	temp = stacks->b[0];
-	stacks->b[0] = stacks->b[1];
-	stacks->b[1] = temp;
+	i = 0;
+	while (i < (stacks->len - stacks->index - 1))
+	{
+		stacks->b[i] = stacks->b[i + 1];
+		i++;
+	}
+	stacks->b[(stacks->len - stacks->index) - 1] = temp;
 }
 
-void	sswap(t_stack *stacks)
+void	ra_rb(t_stack *stacks)
 {
-	swap_a(stacks);
-	swap_b(stacks);
+	rotate_a(stacks);
+	rotate_b(stacks);
 }
-
-

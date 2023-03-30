@@ -6,7 +6,7 @@
 #    By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:22:58 by ltressen          #+#    #+#              #
-#    Updated: 2023/03/29 15:52:58 by ltressen         ###   ########.fr        #
+#    Updated: 2023/03/30 14:01:03 by ltressen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ EXEC= push_swap
 SRC = push.c \
 	swap.c \
 	main.c \
-	memory.c
+	memory.c \
+	rotate.c \
+	r_rotate.c \
+	algo.c
+	
 OBJ = ${SRC:.c=.o} 
 	
 all: $(NAME)  clean
@@ -26,6 +30,7 @@ all: $(NAME)  clean
 $(NAME):
 	make -C libft/
 	mv libft/libft.a ${NAME}
+	gcc -c ${FLAGS} ${SRC}
 	ar rc ${NAME} ${OBJ}
 	gcc ${FLAGS} ${SRC} ${NAME} -o ${EXEC}
 	

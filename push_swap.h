@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/29 13:47:53 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:01:06 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,14 @@ void	sswap(t_stack *stacks);
 int	make_stacks(t_stack *stacks, int argc, char **argv);
 void	fill_a(t_stack *stacks, char **argv);
 void	fill_a_split(t_stack *stacks, char **splitted);
+void	rotate_b(t_stack *stacks);
+void	rotate_a(t_stack *stacks);
+void	ra_rb(t_stack *stacks);
+void	r_rotate_b(t_stack *stacks);
+void	r_rotate_a(t_stack *stacks);
+void	r_ra_rb(t_stack *stacks);
+int	is_sorted(t_stack *stacks);
+void	algo_one(t_stack *stacks);
+
 
 #endif
