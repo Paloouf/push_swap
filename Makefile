@@ -6,7 +6,7 @@
 #    By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:22:58 by ltressen          #+#    #+#              #
-#    Updated: 2023/03/30 14:01:03 by ltressen         ###   ########.fr        #
+#    Updated: 2023/03/31 11:59:09 by ltressen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME):
 	mv libft/libft.a ${NAME}
 	gcc -c ${FLAGS} ${SRC}
 	ar rc ${NAME} ${OBJ}
-	gcc ${FLAGS} ${SRC} ${NAME} -o ${EXEC}
+	gcc ${FLAGS} -g ${SRC} ${NAME} -o ${EXEC}
 	
 clean:
 	make clean -C libft/

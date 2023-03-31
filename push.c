@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:19 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/30 12:32:38 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:35:45 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	push_a(t_stack *stacks)
 			stacks->b[i] = stacks->b[i + 1];
 			i++;
 		}
-		stacks->b[stacks->index - 1] = 0;
+		stacks->b[stacks->len - stacks->index - 1] = 0;
 		stacks->index++;
 		stacks->a[0] = temp;
+		write(1, "pa\n", 3);
 	}
 }
 
@@ -51,6 +52,7 @@ void	push_b(t_stack *stacks)
 		stacks->a[stacks->index - 1] = 0;
 		stacks->index--;
 		stacks->b[0] = temp;
+		write(1, "pb\n", 3);
 	}
 
 }
