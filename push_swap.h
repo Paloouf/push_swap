@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/31 10:35:41 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:32:19 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	r_ra_rb(t_stack *stacks);
 int	is_sorted(t_stack *stacks);
 void	algo_one(t_stack *stacks);
 void	algo_two(t_stack *stacks);
+void	algo_three(t_stack *stacks);
 int	is_b_sorted(t_stack *stacks);
 
 

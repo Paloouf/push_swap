@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:30:18 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/31 13:39:10 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/03 15:36:35 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	//push_a(&stacks);
 	//push_a(&stacks);
 	//swap_a(&stacks, 0);*/
-	while(i < 200)
+	while(is_sorted(&stacks) != 1)
 	{
 		algo_one(&stacks);
 		i++;
