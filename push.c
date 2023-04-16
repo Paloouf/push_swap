@@ -6,52 +6,52 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:19 by ltressen          #+#    #+#             */
-/*   Updated: 2023/03/31 13:35:45 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:44:01 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_stack *stacks)
+void	push_a(t_stack *st)
 {
 	int	i;
 	int	temp;
 
-	temp = stacks->b[0];
+	temp = st->b[0];
 	i = 0;
-	if (stacks->index < stacks->len)
+	if (st->index < st->len)
 	{
-		while (i < stacks->len - 1)
+		while (i < st->len - 1)
 		{
-			stacks->a[stacks->len - (i + 1)] = stacks->a[stacks->len - (i + 2)];
-			stacks->b[i] = stacks->b[i + 1];
+			st->a[st->len - (i + 1)] = st->a[st->len - (i + 2)];
+			st->b[i] = st->b[i + 1];
 			i++;
 		}
-		stacks->b[stacks->len - stacks->index - 1] = 0;
-		stacks->index++;
-		stacks->a[0] = temp;
+		st->b[st->len - st->index - 1] = 0;
+		st->index++;
+		st->a[0] = temp;
 		write(1, "pa\n", 3);
 	}
 }
 
-void	push_b(t_stack *stacks)
+void	push_b(t_stack *st)
 {
 	int	i;
 	int	temp;
 
-	temp = stacks->a[0];
+	temp = st->a[0];
 	i = 0;
-	if (stacks->index > 0)
+	if (st->index > 0)
 	{
-		while (i < stacks->len - 1)
+		while (i < st->len - 1)
 		{
-			stacks->b[stacks->len - (i + 1)] = stacks->b[stacks->len - (i + 2)];
-			stacks->a[i] = stacks->a[i + 1];
+			st->b[st->len - (i + 1)] = st->b[st->len - (i + 2)];
+			st->a[i] = st->a[i + 1];
 			i++;
 		}
-		stacks->a[stacks->index - 1] = 0;
-		stacks->index--;
-		stacks->b[0] = temp;
+		st->a[st->index - 1] = 0;
+		st->index--;
+		st->b[0] = temp;
 		write(1, "pb\n", 3);
 	}
 

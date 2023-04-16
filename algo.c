@@ -6,20 +6,20 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:45:50 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/03 14:39:42 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:43:47 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stacks)
+int	is_sorted(t_stack *st)
 {
 	int	i;
 
 	i = 0;
-	while ((i + 1) < stacks->len)
+	while ((i + 1) < st->len)
 	{
-		if (stacks->a[i] < stacks->a[i + 1])
+		if (st->a[i] < st->a[i + 1])
 			i++;	
 		else
 			return (0);
@@ -27,14 +27,14 @@ int	is_sorted(t_stack *stacks)
 	return (1);
 }
 
-int	is_b_sorted(t_stack *stacks)
+int	is_a_sorted(t_stack *st)
 {
 	int	i;
 
 	i = 0;
-	while ((i + 1) < (stacks->len - stacks->index))
+	while ((i + 1) < st->index)
 	{
-		if (stacks->b[i] > stacks->b[i + 1])
+		if (st->a[i] < st->a[i + 1])
 			i++;	
 		else
 			return (0);
@@ -42,65 +42,80 @@ int	is_b_sorted(t_stack *stacks)
 	return (1);
 }
 
-void	refill_a(t_stack *stacks)
+int	is_b_sorted(t_stack *st)
 {
-	while (stacks->index != stacks->len)
+	int	i;
+
+	i = 0;
+	while ((i + 1) < (st->len - st->index))
 	{
-		push_a(stacks);
-		if (stacks->a[1] < stacks->a[0])
-			swap_a(stacks, 0);
+		if (st->b[i] > st->b[i + 1])
+			i++;	
+		else
+			return (0);
 	}
-	if (stacks->a[stacks->len -1] < stacks->a[stacks->len -2])
+	return (1);
+}
+
+void	refill_a(t_stack *st)
+{
+	while (st->index != st->len)
 	{
-		algo_three(stacks);
+		push_a(st);
+		if (st->a[1] < st->a[0])
+			swap_a(st, 0);
+	}
+	if (st->a[st->len -1] < st->a[st->len -2])
+	{
+		algo_three(st);
 	}
 }
-void	algo_one(t_stack *stacks)
+void	algo_one(t_stack *st)
 {
 	//compare 1st, 2nd and last ints and decide which op is best
-	if (is_sorted(stacks) == 1 && stacks->index == stacks->len)
+	if (is_sorted(st) == 1 && st->index == st->len)
 		return ;
-	if (stacks->index > 1)
+	if (st->index > 1)
 	{
-		if (stacks->a[0] < stacks->a[1])
+		if (st->a[0] < st->a[1])
 		{
-			if (stacks->a[0] < stacks->a[stacks->index - 1])
+			if (st->a[0] < st->a[st->index - 1])
 			{
-				push_b(stacks);
+				push_b(st);
 			}
-			else
-				r_rotate_a(stacks, 0);
+			else if (st->a[0] >= st->a[st->index - 1])
+				r_rotate_a(st, 0);
 		}
 		else
-			swap_a(stacks, 0);
-		if (stacks->index < stacks->len - 1)
-			algo_two(stacks);
-		if (is_sorted(stacks) == 1 && stacks->index == stacks->len - 1)
-			push_a(stacks);
+			swap_a(st, 0);
+		if (st->index < st->len - 1)
+			algo_two(st);
+		if (is_sorted(st) == 1 && st->index == st->len - 1)
+			push_a(st);
 	}
 }
 
-void	algo_two(t_stack *stacks)
+void	algo_two(t_stack *st)
 {
-	if (stacks->b[0] > stacks->b[1])
+	if (st->b[0] > st->b[1])
 	{
-		if ((stacks->b[0] < stacks->b[stacks->len - stacks->index - 1]) && (stacks->len - stacks->index > 2))
-			r_rotate_b(stacks, 0);
+		if ((st->b[0] < st->b[st->len - st->index - 1]) && (st->len - st->index > 2))
+			r_rotate_b(st, 0);
 	}
 	else
-		swap_b(stacks, 0);
-	if (stacks->index == 2)
-		refill_a(stacks);
+		swap_b(st, 0);
+	if (st->index == 2)
+		refill_a(st);
 }
 
 //useful for last two numbers needed to be swapped
-void	algo_three(t_stack *stacks)
+void	algo_three(t_stack *st)
 {
-	r_rotate_a(stacks, 0);
-	r_rotate_a(stacks, 0);
-	swap_a(stacks, 0);
-	rotate_a(stacks, 0);
-	rotate_a(stacks, 0);
+	r_rotate_a(st, 0);
+	r_rotate_a(st, 0);
+	swap_a(st, 0);
+	rotate_a(st, 0);
+	rotate_a(st, 0);
 	return ;
 }
-//is_b_sorted(stacks) == 1 && 
+//is_b_sorted(st) == 1 && 

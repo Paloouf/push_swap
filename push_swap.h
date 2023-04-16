@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/03 09:32:19 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:43:41 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,43 @@ typedef struct s_stack
 {
 	int	*a;
 	int	*b;
+	int	*o;
 	int	index;
 	int	len;
+	int	min;
+	int	max;
+	int	mid;
 
 } t_stack;
 
-void	push_a(t_stack *stacks);
-void	push_b(t_stack *stacks);
-void	swap_a(t_stack *stacks, int flag);
-void	swap_b(t_stack *stacks, int flag);
-void	sswap(t_stack *stacks);
-int	make_stacks(t_stack *stacks, int argc, char **argv);
-void	fill_a(t_stack *stacks, char **argv);
-void	fill_a_split(t_stack *stacks, char **splitted);
-void	rotate_b(t_stack *stacks, int flag);
-void	rotate_a(t_stack *stacks, int flag);
-void	ra_rb(t_stack *stacks);
-void	r_rotate_b(t_stack *stacks, int flag);
-void	r_rotate_a(t_stack *stacks, int flag);
-void	r_ra_rb(t_stack *stacks);
-int	is_sorted(t_stack *stacks);
-void	algo_one(t_stack *stacks);
-void	algo_two(t_stack *stacks);
-void	algo_three(t_stack *stacks);
-int	is_b_sorted(t_stack *stacks);
+void	push_a(t_stack *st);
+void	push_b(t_stack *st);
+void	swap_a(t_stack *st, int flag);
+void	swap_b(t_stack *st, int flag);
+void	sswap(t_stack *st);
+int	make_stacks(t_stack *st, int argc, char **argv);
+int	make_index(t_stack *st);
+void	fill_a(t_stack *st, char **argv);
+void	fill_a_split(t_stack *st, char **splitted);
+void	rotate_b(t_stack *st, int flag);
+void	rotate_a(t_stack *st, int flag);
+void	ra_rb(t_stack *st);
+void	r_rotate_b(t_stack *st, int flag);
+void	r_rotate_a(t_stack *st, int flag);
+void	r_ra_rb(t_stack *st);
+int	is_sorted(t_stack *st);
+void	algo_one(t_stack *st);
+void	algo_two(t_stack *st);
+void	algo_three(t_stack *st);
+int	is_b_sorted(t_stack *st);
+int	is_a_sorted(t_stack *st);
+void	algo_v2(t_stack *st);
+void	algo_v2_0_1(t_stack *st);
+void	algo_v2_0_2(t_stack *st);
+int	is_p_in_b(t_stack *st, int n);
+int	best_choice(t_stack *st, int i, int n);
+//void	quicksort(t_stack *st, int low, int high);
+//int	partition(t_stack *st, int low, int high);
 
 
 #endif
