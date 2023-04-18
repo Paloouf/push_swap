@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:30:18 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/16 13:58:38 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:29:07 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	if (!make_stacks(&st, argc, argv))
 		return (0);
 	i = 0;
-	while(i < 50)
+	while(i < 1)
 	{
 		algo_v2(&st);
 		i++;
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	printf("\n");
 	while(i < st.len)
 	{
-		printf("a :%d \t b :%d \t o: %d \t 90%% of o :%d\n", st.a[i], st.b[i], st.o[i], st.o[(st.len/10) * 10 - 1]);
+		printf("a :%d \t b :%d \t o: %d \t 90%% of o :%d\n", st.a[i], st.b[i], st.o[i], st.o[(st.len/10) * 9]);
 		i++;
 	}
 	free(st.a);

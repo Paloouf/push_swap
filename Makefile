@@ -6,7 +6,7 @@
 #    By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:22:58 by ltressen          #+#    #+#              #
-#    Updated: 2023/04/06 09:23:24 by ltressen         ###   ########.fr        #
+#    Updated: 2023/04/17 10:25:58 by ltressen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,11 @@ SRC = push.c \
 	
 OBJ = ${SRC:.c=.o} 
 	
-all: $(NAME)  clean
+all: $(NAME)
 
-$(NAME):
+$(NAME): ${OBJ}
 	make -C libft/
 	mv libft/libft.a ${NAME}
-	gcc -c ${FLAGS} ${SRC}
 	ar rc ${NAME} ${OBJ}
 	gcc ${FLAGS} -g ${SRC} ${NAME} -o ${EXEC}
 	

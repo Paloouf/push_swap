@@ -6,7 +6,7 @@
 #    By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 14:48:10 by ltressen          #+#    #+#              #
-#    Updated: 2023/03/20 12:20:21 by ltressen         ###   ########.fr        #
+#    Updated: 2023/04/17 10:33:38 by ltressen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,7 @@ SRC = ft_isalpha.c \
       get_next_line_bonus.c \
       get_next_line_utils_bonus.c \
       ft_power.c \
-
-SRC_B = ft_lstnew_bonus.c \
+      ft_lstnew_bonus.c \
 	ft_lstsize_bonus.c \
 	ft_lstlast_bonus.c \
 	ft_lstdelone_bonus.c \
@@ -67,17 +66,10 @@ SRC_B = ft_lstnew_bonus.c \
 
 OBJ = ${SRC:.c=.o}
 
-OBJ_B = ${SRC_B:.c=.o}
+all:	${NAME}
 
-${NAME}:
-	gcc -c ${FLAGS} ${SRC}
+${NAME}: ${OBJ}
 	ar rc ${NAME} ${OBJ}
-
-all:	${NAME} clean
-
-bonus:
-	gcc -c ${FLAGS} ${SRC_B} ${SRC}
-	ar rc ${NAME} ${OBJ_B} ${OBJ}
 
 clean: 
 	rm -f ${OBJ} ${OBJ_B}

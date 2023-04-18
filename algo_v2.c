@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:10:33 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/16 16:07:07 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:46:00 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,18 @@ void	algo_v2(t_stack *st)
 	//premier 20% =  if st->a[i] <= st->o[st->len/5] // deuxieme 20% = st->o[(st->len/5)*2] // 3eme 20% = st->o[(st->len/5)*3]
 }
 
-int	best_choice(t_stack *st, int i, int n)
+void	best_choice(t_stack *st, int i, float n, float m)
 {
 	int	j;
 
 	j = i;
-	//printf("LOL");
-	//printf("a[i] : %d, o[len/10] : %d, o[len/10 * n + 1] : %d", st->a[i], st->o[(st->len/10 * n)], st->o[(st->len/10) * (n + 1)]);
-	//n c'est la partition, pour n = 1, on veut la partition de 10 a 20%, comment l'utiliser ici
-	//si i inferieur a 50% de la len totale quel move est le plus opti
-	if (st->len < 10)
+	if (st->len <= 10)
 	{
 		algo_one(st);
 	}
-	if (st->a[i] >= st->o[(st->len/10 * n) - 1] && st->a[i] <= st->o[(st->len/10) * (n + 1) - 1])
+	if ((st->a[i] >= st->o[(int)(st->len * n)] && st->a[i] < st->o[(int)(st->len * (n+0.1))]) || (st->a[i] >= st->o[(int)(st->len * m)] && st->a[i] <= st->o[(int)(st->len * (m+0.1) - 1)]))
 	{
-		if (i <= st->len/2)
+		if (i <= st->index/2)
 		{
 			//tant qu'on est pas revenu au debut
 			while(j >= 1)
@@ -64,77 +60,105 @@ int	best_choice(t_stack *st, int i, int n)
 		else
 		{
 			//tant qu'on est pas arrive a la fin
-			while (j < st->len - 1)
+			while (j <= st->index - 1)
 			{
 				r_rotate_a(st, 0);
 				j++;
 			}
 		}
-		//printf("WAAA");
+		ft_printf("WAAA %d \t", st->index);
 		push_b(st);
-		i = -1;
 		if (st->index < st->len - 1)
-			algo_v2_0_2(st);
-		return (1);
+			algo_v2_0_2(st, n);
 	}
-	else
-		return (0);
 }
 
-//is the partition in b
-int	is_p_in_b(t_stack *st, int n)
-{
-	int	j;
-	static int	check = 0;
 
-	j = 0;
-	if (st->index < st->len - 1)
+int	is_p_in_b(t_stack *st, float n, float m)
+{
+	int	check;
+	int	i;
+
+	i = 0;
+	check = 0;
+	if (st->index < st->len)
 	{
-		while (st->b[j])
+		//ft_printf("ICI");
+		while (st->b[i])
 		{
-			if (st->b[j] >= st->o[(st->len/10 * n)] && st->b[j]  < st->o[(st->len/10) * (n + 1) - 1])
+			
+			if ((st->b[i] >= st->o[(int)(st->len * n)] && st->b[i] < st->o[(int)(st->len * (n+0.1))]) || (st->b[i] >= st->o[(int)(st->len * m)] && st->b[i] <= st->o[(int)(st->len * (m+0.1)) - 1]))
 				check++;
-			j++;
+			i++;
 		}
+		//ft_printf("LA");
+		if (check == ((int)(st->len * 0.2)))
+			return (1);
 	}
-	printf("check : %d, len/10 : %d", check, (st->len/10 * (n+1)));
-	if (check == ((st->len/ 10) * (n+1)))
-		return (1);
+	return (0);
+}
+
+void	closest_index(t_stack *st, float n, float m)
+{
+	int i;
+	int j;
+	int index_start;
+	int index_end;
+
+	j = st->index - 1;
+	i = -1;
+	index_start = -1;
+	index_end = -1;
+	//printf("n : %f , m : %f \n", n,m);
+	while (index_start < 0 && i < st->index)
+	{
+		i++;
+		if ((st->a[i] >= st->o[(int)(st->len * n)] && st->a[i] < st->o[(int)(st->len * (n+0.1))]) || (st->a[i] >= st->o[(int)(st->len * m)] && st->a[i] <= st->o[(int)(st->len * (m+0.1) - 1)]))
+			index_start = i;	
+	}
+	//printf("%d , %d", i, j);
+	while (index_end < 0 && j > -1)
+	{
+		if ((st->a[j] >= st->o[(int)(st->len * n)] && st->a[j] < st->o[(int)(st->len * (n+0.1))]) || (st->a[j] >= st->o[(int)(st->len * m)] && st->a[j] <= st->o[(int)(st->len * (m+0.1) - 1)]))
+			index_end = st->index - j;
+		j--;
+	}
+	if (index_start > index_end)
+	{
+		//le meilleur move est rra
+		best_choice(st, j + 1, n, m);
+	}
 	else
-		return (0);
+		best_choice(st, i, n, m);
 }
 
 //pre-tri 1/10 dans l'algo de tri pour push dans b
 void	algo_v2_0_1(t_stack *st)
 {
-	int	i;
-	int	n;
+	float	n;
+	float	m;
 
-	i = 0;
+	
 	n = 0;
-	while (st->a[i])
+	m = n + 0.1;
+	while (m < 1)
 	{
-		while (n < 10)
+		//ft_printf("n: %d \t m: %d \n", (n * 10), (m * 10));
+		while (!is_p_in_b(st, n, m))
 		{
-			while (is_p_in_b(st, n) != 1)
-			{
-				if (best_choice(st, i, n) == 1)
-					i = -1;
-				i++;
-			}
-			n++;
+			closest_index(st, n, m);
 		}
-		
+		//ft_printf("bonjour \n");
+		n += 0.2;
+		m += 0.2;
 	}		
 }
 
-void	algo_v2_0_2(t_stack *st)
+void	algo_v2_0_2(t_stack *st, float n)
 {
-	if (st->b[0] > st->b[1])
-	{
-		if ((st->b[0] < st->b[st->len - st->index - 1]) && (st->len - st->index > 2))
-			r_rotate_b(st, 0);
-	}
-	else
-		swap_b(st, 0);
+	//printf("LEBUG");
+	if ((st->b[0] >= st->o[(int)(st->len * n)] && st->b[0] < st->o[(int)((st->len) * (n+0.1))]))
+		rotate_b(st, 0);
+	//printf("LEBUG2");
+
 }
