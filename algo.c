@@ -6,12 +6,13 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:45:50 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/04 15:43:47 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:31:43 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//tout est sorted et tout est dans a
 int	is_sorted(t_stack *st)
 {
 	int	i;
@@ -26,7 +27,7 @@ int	is_sorted(t_stack *st)
 	}
 	return (1);
 }
-
+//ce qui est present dans a est sorted
 int	is_a_sorted(t_stack *st)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/18 15:42:47 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:34:07 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef struct s_stack
 	int	min;
 	int	max;
 	int	mid;
+	int	p1;
+	int	p2;
+	int	p3;
+	int	p4;
+	int	p6;
+	int	p7;
+	int	p8;
+	int	p9;
 
 } t_stack;
 
@@ -50,12 +58,15 @@ void	algo_two(t_stack *st);
 void	algo_three(t_stack *st);
 int	is_b_sorted(t_stack *st);
 int	is_a_sorted(t_stack *st);
-void	algo_v2(t_stack *st);
 void	algo_v2_0_1(t_stack *st);
-void	algo_v2_0_2(t_stack *st, float n);
-int	is_p_in_b(t_stack *st, float n, float m);
+void	algo_v2_0_2(t_stack *st, int n);
+int	is_p_in_b(t_stack *st, int n, int m);
+int	is_p_in_a_sorted(t_stack *st, int n, int m);
 void	best_choice(t_stack *st, int i, float n, float m);
 void	closest_index(t_stack *st, float n, float m);
+void	on_fait_des_essais(t_stack *st, int n, int m);
+int	find_big(t_stack *st);
+void	now_we_sort(t_stack *st);
 //void	quicksort(t_stack *st, int low, int high);
 //int	partition(t_stack *st, int low, int high);
 

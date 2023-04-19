@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:51 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/18 12:40:47 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:25:02 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ int	make_index(t_stack *st)
 		st->o[index] = st->a[i];
 		i++;
 	}
+	st->min = 0;
+	st->p1 = st->len/10;
+	st->p2 = (st->len/10) * 2;
+	st->p3 = (st->len/10) * 3;
+	st->p4 = (st->len/10) * 4;
+	st->mid = (st->len/2);
+	st->p6 = (st->len/10) * 6;
+	st->p7 = (st->len/10) * 7;
+	st->p8 = (st->len/10) * 8;
+	st->p9 = (st->len/10) * 9;
+	st->max = st->len - 1;
 	st->o[st->len] = '\0';
 	return (1);
 }
