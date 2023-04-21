@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:19 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/04 15:44:01 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:14:57 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,4 @@ void	push_b(t_stack *st)
 		st->b[0] = temp;
 		write(1, "pb\n", 3);
 	}
-
 }
-

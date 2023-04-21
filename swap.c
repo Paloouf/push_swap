@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:45:26 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/04 15:44:06 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:20:57 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap_a(t_stack *st, int flag)
 {
-	int temp;
+	int	temp;
 
 	temp = st->a[0];
 	st->a[0] = st->a[1];
@@ -25,7 +25,7 @@ void	swap_a(t_stack *st, int flag)
 
 void	swap_b(t_stack *st, int flag)
 {
-	int temp;
+	int	temp;
 
 	temp = st->b[0];
 	st->b[0] = st->b[1];
@@ -43,5 +43,3 @@ void	sswap(t_stack *st)
 	swap_b(st, flag);
 	write(1, "ss\n", 3);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/20 16:01:48 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:37:16 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	swap_b(t_stack *st, int flag);
 void	sswap(t_stack *st);
 int	make_stacks(t_stack *st, int argc, char **argv);
 int	make_index(t_stack *st);
+void	get_values(t_stack *st);
 void	fill_a(t_stack *st, char **argv);
-void	fill_a_split(t_stack *st, char **splitted);
+void	fill_a_split(t_stack *st, char **argv);
 void	rotate_b(t_stack *st, int flag);
 void	rotate_a(t_stack *st, int flag);
 void	ra_rb(t_stack *st);
@@ -59,6 +60,7 @@ void	algo_three(t_stack *st);
 int	is_b_sorted(t_stack *st);
 int	is_a_sorted(t_stack *st);
 void	algo_v2_0_1(t_stack *st);
+void	algo_v2_1_1(t_stack *st);
 void	algo_v2_0_2(t_stack *st, int n, int t);
 int	is_p_in_b(t_stack *st, int n, int m);
 int	is_p_in_a_sorted(t_stack *st, int n, int m);
@@ -70,8 +72,7 @@ void	now_we_sort(t_stack *st, int n, int m);
 int	find_small(t_stack *st, int n, int m);
 void	now_we_sort_more(t_stack *st, int big, int small);
 void	now_we_sort_better(t_stack *st);
-//void	quicksort(t_stack *st, int low, int high);
-//int	partition(t_stack *st, int low, int high);
-
+void	now_we_sort_2(t_stack *st, int big, int small);
+void	now_we_sort_3(t_stack *st, int small);
 
 #endif
