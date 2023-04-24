@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 13:37:16 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:05:24 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	is_a_sorted(t_stack *st);
 void	algo_v2_0_1(t_stack *st);
 void	algo_v2_1_1(t_stack *st);
 void	algo_v2_0_2(t_stack *st, int n, int t);
+void	algo_nul(t_stack *st);
+void	algo_nul_reborn(t_stack *st);
 int	is_p_in_b(t_stack *st, int n, int m);
 int	is_p_in_a_sorted(t_stack *st, int n, int m);
 void	best_choice(t_stack *st, int i, float n, float m);
@@ -74,5 +76,6 @@ void	now_we_sort_more(t_stack *st, int big, int small);
 void	now_we_sort_better(t_stack *st);
 void	now_we_sort_2(t_stack *st, int big, int small);
 void	now_we_sort_3(t_stack *st, int small);
+void	check_args(t_stack *st);
 
 #endif

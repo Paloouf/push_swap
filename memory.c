@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:51 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 14:06:55 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:36:57 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,20 @@ int	make_index(t_stack *st)
 	i = 0;
 	j = 0;
 	index = 0;
-	st->o = (int *)malloc(sizeof(int) * st->len + 1);
+	st->o = (int *)malloc(sizeof(int) * st->len);
 	if (!st->o)
 		exit(EXIT_FAILURE);
-	while (st->a[i])
+	while (i < st->index)
 	{
 		j = 0;
 		index = 0;
-		while (st->a[j])
+		while (j < st->index)
 			if (st->a[i] > st->a[j++])
 				index++;
 		st->o[index] = st->a[i];
 		i++;
 	}
 	get_values(st);
-	st->o[st->len] = '\0';
 	return (1);
 }
 
@@ -68,37 +67,30 @@ int	make_stacks(t_stack *st, int argc, char **argv)
 	st->index = st->len;
 	if (!st->a || !st->b)
 		exit(EXIT_FAILURE);
+	else
+		check_args(st);
 	make_index(st);
 	return (1);
 }
 
-void	fill_a(t_stack *st, char **argv)
+void	check_args(t_stack *st)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (argv[i +1] != NULL)
+	while (i < st->len - 2)
 	{
-		st->a[i] = ft_atoi(argv[i + 1]);
-		i++;
-	}
-}
-
-void	fill_a_split(t_stack *st, char **argv)
-{
-	char	**splitted;
-	int		i;
-
-	i = 0;
-	splitted = ft_split(argv[1], ' ');
-	while (splitted[i])
-		i++;
-	st->len = i;
-	st->a = malloc(sizeof(int *) * i);
-	st->b = ft_calloc(i, sizeof(int *));
-	while (splitted[i])
-	{
-		st->a[i] = ft_atoi(splitted[i]);
+		j = i + 1;
+		while (j < st->len - 1)
+		{
+			if (st->a[i] == st->a[j])
+			{
+				write(1, "Error\n", 6);
+				exit(EXIT_FAILURE);
+			}
+			j++;
+		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:22:58 by ltressen          #+#    #+#              #
-#    Updated: 2023/04/21 13:10:40 by ltressen         ###   ########.fr        #
+#    Updated: 2023/04/24 15:37:51 by ltressen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRC = push.c \
 	algo_v2.c \
 	sorted.c \
 	algo_v2_1.c \
-	sorting.c
+	sorting.c \
+	algo_utils.c \
+	memory_utils.c
 	
 OBJ = ${SRC:.c=.o} 
 	

@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:10:20 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 15:43:05 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:23:57 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@ void	now_we_sort(t_stack *st, int n, int m)
 {
 	int	big;
 	int	small;
-	int	i;
 
-	i = 0;
 	while (!is_p_in_a_sorted(st, n, m))
 	{
-		if (st->b[i] >= st->o[n - 1] && st->b[i] < st->o[m - 1])
+		if (st->len - st->index > 0)
 		{
 			big = find_big(st);
 			small = find_small(st, n, m);
 			now_we_sort_2(st, big, small);
 		}
-		i++;
 	}
 }
 

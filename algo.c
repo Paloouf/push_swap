@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:45:50 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 13:01:26 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:38:49 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ void	algo_one(t_stack *st)
 {
 	if (is_sorted(st) == 1 && st->index == st->len)
 		return ;
-	if (st->index > 1)
+	if (st->len == 3)
+		algo_nul(st);
+	else if (st->len == 5)
+		algo_nul_reborn(st);
+	else if (st->index > 1)
 	{
 		if (st->a[0] < st->a[1])
 		{

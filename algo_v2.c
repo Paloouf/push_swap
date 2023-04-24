@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:10:33 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 14:16:40 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:30:51 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	on_fait_des_essais(t_stack *st, int n, int m)
 
 	j = -1;
 	i = 0;
-	if (st->len <= 10)
-		algo_one(st);
-	while (j < 0 && st->a[i])
+	while (j < 0 && i < st->index)
 	{
 		if ((st->a[i] >= st->o[n] && st->a[i] < st->o[m]))
 			j = i;
@@ -49,7 +47,7 @@ int	is_p_in_b(t_stack *st, int n, int m)
 	check = 0;
 	if (st->index < st->len)
 	{
-		while (st->b[i])
+		while (i < st->len - st->index)
 		{	
 			if ((st->b[i] >= st->o[n] && st->b[i] < st->o[m]))
 				check++;
@@ -68,9 +66,9 @@ int	is_p_in_a_sorted(t_stack *st, int n, int m)
 
 	i = 0;
 	check = 0;
-	if (st->index <= st->len)
+	if (st->index <= st->len && st->index > 0)
 	{
-		while (st->a[i])
+		while (i < st->index)
 		{
 			if ((st->a[i] >= st->o[n] && st->a[i] < st->o[m]))
 				check++;
@@ -84,6 +82,12 @@ int	is_p_in_a_sorted(t_stack *st, int n, int m)
 
 void	algo_v2_0_1(t_stack *st)
 {
+	if (st->len < 10)
+	{
+		while (!is_sorted(st))
+			algo_one(st);
+		return ;
+	}
 	while (!is_p_in_b(st, st->min, st->p2))
 		on_fait_des_essais(st, st->min, st->p2);
 	while (!is_p_in_b(st, st->p2, st->p4))

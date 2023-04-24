@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:54:10 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 13:04:33 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:35:30 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	find_small(t_stack *st, int n, int m)
 
 	i = 0;
 	small = INT32_MAX;
-	while (st->b[i])
+	while (i < st->len - st->index)
 	{
 		if ((st->b[i] >= st->o[n] && st->b[i] < st->o[m]) && st->b[i] < small)
 		{
@@ -57,7 +57,7 @@ int	find_big(t_stack *st)
 
 	i = 0;
 	big = INT32_MIN;
-	while (st->b[i])
+	while (i < st->len - st->index)
 	{
 		if (st->b[i] > big)
 		{
