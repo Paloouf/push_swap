@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:29:51 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 15:36:57 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:10:21 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,25 @@ void	check_args(t_stack *st)
 	int	j;
 
 	i = 0;
-	while (i < st->len - 2)
+	while (i < st->len - 1)
 	{
 		j = i + 1;
-		while (j < st->len - 1)
+		while (j < st->len)
 		{
 			if (st->a[i] == st->a[j])
 			{
 				write(1, "Error\n", 6);
+				panic_free(st);
 				exit(EXIT_FAILURE);
 			}
 			j++;
 		}
 		i++;
 	}
+}
+
+void	panic_free(t_stack *st)
+{
+	free(st->a);
+	free(st->b);
 }
