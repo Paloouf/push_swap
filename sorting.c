@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:10:20 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 11:23:57 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:10:38 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	now_we_sort_2(t_stack *st, int big, int small)
 				rotate_b(st, 0);
 				big--;
 			}
-			push_a(st);
+			push_a(st, 0);
 		}
 		else
 		{
@@ -48,7 +48,7 @@ void	now_we_sort_2(t_stack *st, int big, int small)
 				r_rotate_b(st, 0);
 				big++;
 			}
-			push_a(st);
+			push_a(st, 0);
 		}
 	}
 	else
@@ -64,7 +64,7 @@ void	now_we_sort_3(t_stack *st, int small)
 			rotate_b(st, 0);
 			small--;
 		}
-		push_a(st);
+		push_a(st, 0);
 		if (st->index != st->len)
 			rotate_a(st, 0);
 	}
@@ -75,7 +75,7 @@ void	now_we_sort_3(t_stack *st, int small)
 			r_rotate_b(st, 0);
 			small++;
 		}
-		push_a(st);
+		push_a(st, 0);
 		if (st->index != st->len)
 			rotate_a(st, 0);
 	}

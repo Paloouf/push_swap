@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:10:33 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 14:30:51 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:10:57 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	on_fait_des_essais(t_stack *st, int n, int m)
 			rotate_a(st, 0);
 			j--;
 		}
-		push_b(st);
+		push_b(st, 0);
 	}
 	if (st->index < st->len - 1)
 		algo_v2_0_2(st, n, m);

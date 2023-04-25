@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:54:10 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 09:35:30 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:11:42 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	now_we_sort_more(t_stack *st, int big, int small)
 	while (!is_a_sorted(st))
 	{
 		if (st->b[0] != big && st->b[0] != small)
-			r_ra_rb(st);
+			r_ra_rb(st, 0);
 		else
 			r_rotate_a(st, 0);
 	}
@@ -88,6 +88,6 @@ void	algo_v2_0_2(t_stack *st, int n, int t)
 		if (st->a[0] >= st->o[n] && st->a[0] < st->o[t])
 			rotate_b(st, 0);
 		else
-			ra_rb(st);
+			ra_rb(st, 0);
 	}
 }

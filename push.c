@@ -6,13 +6,13 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:19 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 13:14:57 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:08:39 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_stack *st)
+void	push_a(t_stack *st, int flag)
 {
 	int	i;
 	int	temp;
@@ -30,11 +30,12 @@ void	push_a(t_stack *st)
 		st->b[st->len - st->index - 1] = 0;
 		st->index++;
 		st->a[0] = temp;
-		write(1, "pa\n", 3);
+		if (flag != 1)
+			write(1, "pa\n", 3);
 	}
 }
 
-void	push_b(t_stack *st)
+void	push_b(t_stack *st, int flag)
 {
 	int	i;
 	int	temp;
@@ -52,6 +53,7 @@ void	push_b(t_stack *st)
 		st->a[st->index - 1] = 0;
 		st->index--;
 		st->b[0] = temp;
-		write(1, "pb\n", 3);
+		if (flag != 1)
+			write(1, "pb\n", 3);
 	}
 }

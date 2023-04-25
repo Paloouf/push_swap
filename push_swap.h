@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:18:16 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/25 10:35:16 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:21:29 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef struct s_stack
 }	t_stack;
 
 /*	PUSH_SWAP PROGRAM	*/
-void	push_a(t_stack *st);
-void	push_b(t_stack *st);
+void	push_a(t_stack *st, int flag);
+void	push_b(t_stack *st, int flag);
 void	swap_a(t_stack *st, int flag);
 void	swap_b(t_stack *st, int flag);
-void	sswap(t_stack *st);
+void	sswap(t_stack *st, int flag);
 int		make_stacks(t_stack *st, int argc, char **argv);
 int		make_index(t_stack *st);
 void	get_values(t_stack *st);
@@ -49,10 +49,10 @@ void	fill_a(t_stack *st, char **argv);
 void	fill_a_split(t_stack *st, char **argv);
 void	rotate_b(t_stack *st, int flag);
 void	rotate_a(t_stack *st, int flag);
-void	ra_rb(t_stack *st);
+void	ra_rb(t_stack *st, int flag);
 void	r_rotate_b(t_stack *st, int flag);
 void	r_rotate_a(t_stack *st, int flag);
-void	r_ra_rb(t_stack *st);
+void	r_ra_rb(t_stack *st, int flag);
 void	refill_a(t_stack *st);
 int		is_sorted(t_stack *st);
 void	algo_one(t_stack *st);
@@ -82,5 +82,10 @@ void	fill_a_split2(t_stack *st, char **splitted);
 void	panic_free(t_stack *st);
 void	free_split(char **splitted);
 int		check_intmax(char **av);
+
+/*	CHECKER PROGRAM		*/
+int		checker(t_stack *st);
+int		apply_stack_op(t_stack *st, char *line);
+int		apply_stack_rot(t_stack *st, char *line);
 
 #endif

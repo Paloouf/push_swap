@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:37:13 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 15:37:25 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:10:54 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	algo_nul_reborn(t_stack *st)
 {
 	while (st->a[0] != st->o[0] && st->a[0] != st->o[1])
 		rotate_a(st, 0);
-	push_b(st);
+	push_b(st, 0);
 	while (st->a[0] != st->o[0] && st->a[0] != st->o[1])
 		rotate_a(st, 0);
-	push_b(st);
+	push_b(st, 0);
 	algo_nul(st);
 	if (st->b[0] < st->b[1])
 		swap_b(st, 0);
-	push_a(st);
-	push_a(st);
+	push_a(st, 0);
+	push_a(st, 0);
 	return ;
 }

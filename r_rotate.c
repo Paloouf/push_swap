@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 09:52:27 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/21 13:15:12 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:06:36 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ void	r_rotate_b(t_stack *st, int flag)
 		write(1, "rrb\n", 4);
 }
 
-void	r_ra_rb(t_stack *st)
+void	r_ra_rb(t_stack *st, int flag)
 {
 	r_rotate_a(st, 1);
 	r_rotate_b(st, 1);
-	write(1, "rrr\n", 4);
+	if (flag != 1)
+		write(1, "rrr\n", 4);
 }

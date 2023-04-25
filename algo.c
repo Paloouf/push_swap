@@ -6,7 +6,7 @@
 /*   By: ltressen <ltressen@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:45:50 by ltressen          #+#    #+#             */
-/*   Updated: 2023/04/24 15:38:49 by ltressen         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:12:02 by ltressen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	refill_a(t_stack *st)
 {
 	while (st->index != st->len)
 	{
-		push_a(st);
+		push_a(st, 0);
 		if (st->a[1] < st->a[0])
 			swap_a(st, 0);
 	}
@@ -40,7 +40,7 @@ void	algo_one(t_stack *st)
 		{
 			if (st->a[0] < st->a[st->index - 1])
 			{
-				push_b(st);
+				push_b(st, 0);
 			}
 			else if (st->a[0] >= st->a[st->index - 1])
 				r_rotate_a(st, 0);
@@ -50,7 +50,7 @@ void	algo_one(t_stack *st)
 		if (st->index < st->len - 1)
 			algo_two(st);
 		if (is_sorted(st) == 1 && st->index == st->len - 1)
-			push_a(st);
+			push_a(st, 0);
 	}
 }
 
